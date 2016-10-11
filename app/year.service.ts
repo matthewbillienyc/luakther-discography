@@ -1,9 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Year } from './year';
-import { YEARS } from './mock-years';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class YearService {
+  private yearsUrl = 'http://localhost:3000/v1/years';
+
+  constructor(private http: Http) { }
+  
   getYears(): Promise<Year[]> {
-    return Promise.resolve(YEARS);
+    return this.http.get(this.yearsUrl)
+      .toPromise()
+      .then(response => response.years as Year[])
+      .catch(this.handleError);
   }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
+
 }

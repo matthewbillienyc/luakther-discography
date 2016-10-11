@@ -9,16 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_years_1 = require('./mock-years');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 var YearService = (function () {
-    function YearService() {
+    function YearService(http) {
+        this.http = http;
+        this.yearsUrl = 'http://localhost:3000/v1/years';
     }
     YearService.prototype.getYears = function () {
-        return Promise.resolve(mock_years_1.YEARS);
+        return this.http.get(this.yearsUrl)
+            .toPromise()
+            .then(function (response) { return response.years; })
+            .catch(this.handleError);
+    };
+    YearService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
     };
     YearService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], YearService);
     return YearService;
 }());
