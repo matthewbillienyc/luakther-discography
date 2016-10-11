@@ -15,17 +15,16 @@ var YearDetailComponent = (function () {
     }
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', (typeof (_a = typeof year_1.Year !== 'undefined' && year_1.Year) === 'function' && _a) || Object)
+        __metadata('design:type', year_1.Year)
     ], YearDetailComponent.prototype, "year", void 0);
     YearDetailComponent = __decorate([
         core_1.Component({
             selector: 'year-detail',
-            template: "\n  <div *ngIf=\"year\">\n    <h2>{{year.year}} titles!</h2>\n  </div>\n"
+            template: "\n  <div *ngIf=\"year\">\n    <h2>{{year.year}} titles!</h2>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], YearDetailComponent);
     return YearDetailComponent;
-    var _a;
 }());
 exports.YearDetailComponent = YearDetailComponent;
 //# sourceMappingURL=year-detail.component.js.map

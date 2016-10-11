@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Year } from './year';
+
 @Component({
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-    <year-detail [year]="selectedYear"></year-detail>
     <ul class="years">
       <li *ngFor="let year of years" 
         [class.selected]="year === selectedYear"
@@ -12,6 +12,7 @@ import { Year } from './year';
         <span class="badge">{{year.year}}</span>X Titles
       </li>
     </ul>
+    <year-detail [year]="selectedYear"></year-detail>
     `,
   styles: [`
   .selected {

@@ -7,7 +7,7 @@ import { Year } from './year';
   <div *ngIf="year">
     <h2>{{year.year}} titles!</h2>
   </div>
-`
+  `
 
 })
 
