@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Year } from './year';
+import { FormsModule }   from '@angular/forms';
 
 @Component({
   selector: 'my-app',

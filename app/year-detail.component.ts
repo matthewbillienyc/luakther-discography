@@ -8,7 +8,6 @@ import { Year } from './year';
     <h2>{{year.year}} titles!</h2>
   </div>
   `
-
 })
 
 export class YearDetailComponent {
