@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Year } from './year';
 import { FormsModule }   from '@angular/forms';
+import { YearService } from './year.service';
 
 @Component({
   selector: 'my-app',
@@ -63,21 +64,26 @@ import { FormsModule }   from '@angular/forms';
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
-  `]
-
+  `],
+  providers: [YearService]
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
   title = 'Steve Lukather Discography';
-  years = YEARS;
+  years: Year[];
   selectedYear: Year;
+
+  constructor(private yearService: YearService) { }
+  
   onSelect(year: Year): void {
     this.selectedYear = year;
   }
-}
 
-const YEARS: Year[] = [
-  { year: 2016 },
-  { year: 2015 },
-  { year: 2014 },
-  { year: 2013 }
-]
+  ngOnInit(): void {
+    this.getYears();
+  }
+
+  getYears(): void {
+    this.yearService.getYears().then(years => this.years = years);
+  }
+}
