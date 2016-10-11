@@ -9,21 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var year_detail_component_1 = require('./year-detail.component');
-var AppModule = (function () {
-    function AppModule() {
+var year_1 = require('./year');
+var YearDetailComponent = (function () {
+    function YearDetailComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, year_detail_component_1.YearDetailComponent],
-            bootstrap: [app_component_1.AppComponent, year_detail_component_1.YearDetailComponent]
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', (typeof (_a = typeof year_1.Year !== 'undefined' && year_1.Year) === 'function' && _a) || Object)
+    ], YearDetailComponent.prototype, "year", void 0);
+    YearDetailComponent = __decorate([
+        core_1.Component({
+            selector: 'year-detail',
+            template: "\n  <div *ngIf=\"year\">\n    <h2>{{year.year}} titles!</h2>\n  </div>\n"
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], YearDetailComponent);
+    return YearDetailComponent;
+    var _a;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.YearDetailComponent = YearDetailComponent;
+//# sourceMappingURL=year-detail.component.js.map
