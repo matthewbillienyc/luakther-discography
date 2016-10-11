@@ -19,7 +19,7 @@ var YearService = (function () {
     YearService.prototype.getYears = function () {
         return this.http.get(this.yearsUrl)
             .toPromise()
-            .then(function (response) { return response.years; })
+            .then(function (response) { return response.json().years; })
             .catch(this.handleError);
     };
     YearService.prototype.handleError = function (error) {

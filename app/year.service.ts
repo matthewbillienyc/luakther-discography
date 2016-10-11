@@ -12,7 +12,7 @@ export class YearService {
   getYears(): Promise<Year[]> {
     return this.http.get(this.yearsUrl)
       .toPromise()
-      .then(response => response.years as Year[])
+      .then(response => response.json().years as Year[])
       .catch(this.handleError);
   }
 
