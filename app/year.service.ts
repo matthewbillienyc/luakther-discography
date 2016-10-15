@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Year } from './year';
 import { Headers, Http } from '@angular/http';
+import { Title } from './title';
 
 import 'rxjs/add/operator/toPromise';
 @Injectable()

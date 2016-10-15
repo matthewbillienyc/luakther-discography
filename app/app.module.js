@@ -14,13 +14,40 @@ var app_component_1 = require('./app.component');
 var year_detail_component_1 = require('./year-detail.component');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+var years_component_1 = require('./years.component');
+var router_1 = require('@angular/router');
+var dashboard_component_1 = require('./dashboard.component');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
-            declarations: [app_component_1.AppComponent, year_detail_component_1.YearDetailComponent],
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpModule,
+                router_1.RouterModule.forRoot([
+                    {
+                        path: 'years',
+                        component: years_component_1.YearsComponent
+                    },
+                    {
+                        path: 'dashboard',
+                        component: dashboard_component_1.DashboardComponent
+                    },
+                    {
+                        path: '',
+                        redirectTo: '/dashboard',
+                        pathMatch: 'full'
+                    }
+                ])
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                year_detail_component_1.YearDetailComponent,
+                years_component_1.YearsComponent,
+                dashboard_component_1.DashboardComponent
+            ],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
